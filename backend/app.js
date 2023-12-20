@@ -13,3 +13,7 @@ app.listen(port, () => console.log('Server connected'));
 //database
 const connectDB = require('./db');
 connectDB();
+
+//routes
+const tasksRoute = require('./routes/tasks');
+app.use('/tasks', tasksRoute);
