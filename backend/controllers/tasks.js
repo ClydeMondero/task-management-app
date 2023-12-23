@@ -2,17 +2,14 @@ const asyncHandler = require('express-async-handler');
 const TaskModel = require('../models/task');//task model
 
 exports.addTask = asyncHandler(async (req, res) => {
-    //create a new task based on the Task model and values from the request body
-    const task = new TaskModel({
-        title: req.body.title,
-        dueDate: req.body.dueDate,
-        isCompleted: false
-    })
-
     //saves the new task on success and error if failed
     try {
-        const createdTask = await task.save();
-        res.status(200).json(createdTask);//success
+        //create a new task based on the Task model and values from the request body
+        const { title, dueDate, isCompleted } = req.body;
+        const task = await TaskModel.create({
+            title, dueDate, isCompleted
+        })
+        res.status(200).json(task);//success
     } catch (error) {
         res.status(400).json({ message: error.message });//bad request
     }
@@ -39,11 +36,11 @@ exports.getTask = asyncHandler(async (req, res) => {
 exports.updateTask = asyncHandler(async (req, res) => {
     try {
         const id = req.params.id;
-        const updatedTask = req.body;
+        const task = req.body;
         const options = { new: true };
 
         const result = await TaskModel.findByIdAndUpdate(
-            id, updatedTask, options
+            id, task, options
         )
 
         res.send(result);
