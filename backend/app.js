@@ -1,12 +1,22 @@
 const express = require('express');//server
 const cors = require('cors');//cors
 const cookieParser = require('cookie-parser');//cookie parser
+require('dotenv').config();
+
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
-//enable all cors request 
-app.use(cors());
+app.listen(port, () => console.log('Server connected at port', port));
+
+//enable cors 
+app.use(
+    cors({
+        origin: ["http://localhost:4000"],
+        methods: ["GET", "POST", "PATCH", "DELETE"],
+        credentials: true,
+    })
+);
 
 //helps magane cookie-based session
 app.use(cookieParser());
@@ -14,7 +24,6 @@ app.use(cookieParser());
 //parses request to JSON
 app.use(express.json());
 
-app.listen(port, () => console.log('Server connected'));
 
 //database
 const connectDB = require('./db');
