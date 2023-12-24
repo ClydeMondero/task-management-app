@@ -2,7 +2,7 @@ const UserModel = require('../models/users');
 const createSecretToken = require('../utils/secretToken');
 
 //signUp controller
-exports.signUp = async (req, res, next) => {
+exports.signup = async (req, res ) => {
     try {
         const { email, username, password, createdAt } = req.body;//get user details from the req body
 
