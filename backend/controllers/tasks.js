@@ -1,4 +1,7 @@
 const TaskModel = require('../models/task');//task model
+const UserModel = require('../models/user');//user model
+const jwt = require('jsonwebtoken');
+require("dotenv").config();
 
 exports.addTask = async (req, res) => {
     //saves the new task on success and error if failed
@@ -8,6 +11,18 @@ exports.addTask = async (req, res) => {
         const task = await TaskModel.create({
             title, dueDate, isCompleted
         })
+
+        //decode the jwt cookie to find the user id
+        const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+        const userId = decoded.id;
+
+        //references the task id to the user who created it
+        await UserModel.findByIdAndUpdate(
+            userId,
+            { $push: { tasks: task._id } },
+            { new: true, useFindAndModify: false }
+        )
+
         res.status(200).json(task);//success
     } catch (error) {
         res.status(400).json({ message: error.message });//bad request
@@ -16,7 +31,16 @@ exports.addTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
     try {
-        const tasks = await TaskModel.find();
+        //decode the jwt cookie to find the user id
+        const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+        const userId = decoded.id;
+
+        //find the tasks of a user
+        const tasks = await UserModel
+            .findById(userId)
+            .populate('tasks')
+            .select('tasks -_id');
+
         res.status(200).json(tasks);
     } catch (error) {
         res.status(500).json({ message: error.message });//internal server error
@@ -26,6 +50,7 @@ exports.getTasks = async (req, res) => {
 exports.getTask = async (req, res) => {
     try {
         const task = await TaskModel.findById(req.params.id);
+
         res.status(200).json(task);
     } catch (error) {
         res.status(500).json({ message: error.message });

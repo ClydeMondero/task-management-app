@@ -1,4 +1,4 @@
-const UserModel = require('../models/users');
+const UserModel = require('../models/user');
 const createSecretToken = require('../utils/secretToken');
 const bcrypt = require('bcryptjs');
 
@@ -36,6 +36,7 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        //chech if fields are given
         if (!email || !password) return res.json({ message: "All fields are required" });
 
         //check if email is correct

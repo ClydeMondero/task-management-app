@@ -22,7 +22,12 @@ const userSchema = new mongoose.Schema({
         default: new Date()
     },
     tasks: {
-        type: [taskSchema.schema],
+        type: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Task"
+            }
+        ],
     }
 })
 
