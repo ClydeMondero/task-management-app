@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import { Home, Login, Signup } from "./pages";
 
 function App() {
+  useEffect(() => {
+    document.title = "TASQ - Login"
+  }, [])
   return (
     <>
       <Routes>

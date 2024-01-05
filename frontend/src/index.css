@@ -4,6 +4,6 @@
 
 @layer components {
     .input {
-        @apply bg-secondary-bg py-2 px-4 rounded-lg border-primary border-2 text-primary placeholder-secondary;
+        @apply bg-secondary-bg py-2 px-4 rounded-lg border-primary border-2 text-primary placeholder-secondary outline-none;
     }
 }
