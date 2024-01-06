@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+    useEffect(() => {
+        document.title = "TASQ - Login"
+    }, [])
     const navigate = useNavigate();
 
     //state for input fields
@@ -75,7 +78,7 @@ function Login() {
 
     return (
         <div className="flex items-center justify-center h-lvh">
-            <div className="flex flex-col gap-8 p-8 bg-secondary-bg h-3/4 w-1/3 rounded-lg">
+            <div className="flex flex-col gap-8 p-8 bg-secondary-bg h-max w-1/3 rounded-lg">
                 <p className="self-center text-3xl font-bold text-primary">Welcome to TASQ</p>
                 <form className="flex flex-col gap-4 outline-none" onSubmit={handleSubmit}>
                     <input name="email" className="input" type="text" placeholder="Email" value={email} onChange={handleOnChange} />
@@ -83,7 +86,7 @@ function Login() {
 
                     <div className="flex flex-col gap-4">
                         <p className="text-secondary">Forgot your password?</p>
-                        <input className="bg-primary text-white text-xl font-bold w-full py-2 px-4 rounded-lg" type="submit" value="LOGIN" />
+                        <input className="bg-primary text-white text-xl font-bold w-full py-2 px-4 rounded-lg hover:opacity-80" type="submit" value="LOGIN" />
                     </div>
 
                     <div className="flex flex-col gap-2">
