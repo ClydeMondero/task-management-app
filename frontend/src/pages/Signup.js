@@ -7,15 +7,30 @@ function Signup() {
     useEffect(() => {
         document.title = "TASQ - Signup"
     }, [])
+
     const navigate = useNavigate();
 
     //state for input fields
     const [input, setInput] = useState({
+        username: "",
         email: "",
-        password: ""
+        password: "",
+        confirmPassword: "",
+        agreement: false
     });
 
-    const { email, password } = input;
+    const { username, email, password, confirmPassword, agreement } = input;
+
+    const clearForm = () => {
+       setInput({
+                ...input,
+                username: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
+                agreement: false
+            })     
+    }
 
     //update the input fields state on change
     const handleOnChange = (e) => {
@@ -32,6 +47,14 @@ function Signup() {
         toast.success(msg, {
             position: "bottom-left"
         })
+
+        clearForm();
+    }
+
+    const handleWarning = (warning) => {
+        toast.warning(warning, {
+            position: "bottom-left"
+        })
     }
 
     //error toast
@@ -39,14 +62,17 @@ function Signup() {
         toast.error(err, {
             position: "bottom-left"
         })
+
+        clearForm();
     }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/auth/login",
+                "http://localhost:4000/auth/signup",
                 {
                     ...input,
                 },
@@ -55,22 +81,17 @@ function Signup() {
 
             console.log(data);
 
-            const { success, message } = data;
+            const { warning, success, message } = data;
 
             if (success) {
                 handleSuccess(message);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/login");
                 }, 1000);
             } else {
-                handleError(message);
+                warning? handleWarning(message) : handleError(message); 
             }
 
-            setInput({
-                ...input,
-                email: "",
-                password: ""
-            })
         } catch (error) {
             console.log(error)
         }
@@ -81,10 +102,10 @@ function Signup() {
             <div className="flex flex-col gap-8 p-8 bg-secondary-bg h-max w-1/3 rounded-lg">
                 <p className="self-center text-3xl font-bold text-primary">Join us on TASQ</p>
                 <form className="flex flex-col gap-4 outline-none" onSubmit={handleSubmit}>
-                    <input name="username" className="input" type="text" placeholder="Username" />
+                    <input name="username" className="input" type="text" placeholder="Username" value={username} onChange={handleOnChange} />
                     <input name="email" className="input" type="text" placeholder="Email" value={email} onChange={handleOnChange} />
                     <input name="password" className="input" type="password" placeholder="Password" value={password} onChange={handleOnChange} />
-                    <input name="confirmPassword" className="input" type="password" placeholder="Confirm Password" />
+                    <input name="confirmPassword" className="input" type="password" placeholder="Confirm Password" value={confirmPassword} onChange={handleOnChange} />
 
                     <div className="flex flex-col gap-4">
                         <input className="bg-primary text-white text-xl font-bold w-full py-2 px-4 rounded-lg hover:opacity-80" type="submit" value="SIGNUP" />
@@ -92,8 +113,11 @@ function Signup() {
 
                     <div className="flex flex-col gap-2 ">
                         <div className="flex items-center justify-center gap-4 w-full">
-                            <input className="appearance-none bg-secondary-bg mx-4 p-3 border-primary border-2 rounded-lg text-center checked:after:content-['\2713'] checked:py-0 checked:px-[0.38rem]" type="checkbox" />
-                            <p>I agree to TASQ’s <span className="text-secondary">Terms of service and privacy policy.</span></p>
+                            <input
+                                name="agreement"
+                                className="appearance-none bg-secondary-bg mx-4 p-3 border-primary border-2 rounded-lg text-center checked:checked"
+                                type="checkbox" value={agreement} onChange={handleOnChange} />
+                            <p>I agree to TASQ’s <span className="text-secondary">Terms of Service and Privacy Policy.</span></p>
                         </div>
                         <hr className="bg-primary h-[0.20rem]" />
                         <p className="self-center">Already on TASQ?<Link to={"/login"}><span className="text-secondary"> Login</span></Link></p>

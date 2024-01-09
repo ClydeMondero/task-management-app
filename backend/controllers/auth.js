@@ -5,7 +5,16 @@ const bcrypt = require('bcryptjs');
 //signup controller
 exports.signup = async (req, res) => {
     try {
-        const { email, username, password, createdAt } = req.body;//get user details from the req body
+        const { username, email, password, confirmPassword, agreement, createdAt } = req.body;//get user details from the req body
+
+        //check if fields are given
+        if (!email || !password) return res.json({ warning: true, message: "All fields are required" });
+
+        //check if password match 
+        if (password != confirmPassword) return res.json({ warning: true, message: "Password don't match" });
+
+        //check if user agreed to agreement
+        if (!agreement) return res.json({ warning: true, message: "Agree to TASQ's Terms of Service and Privacy Policy first" });
 
         //check if the email of the user already exists
         const isExistingUser = await UserModel.findOne({ email });
@@ -15,7 +24,7 @@ exports.signup = async (req, res) => {
 
         //create a new user
         const user = await UserModel.create({
-            email, username, password, createdAt
+            username, email, password, createdAt
         });
 
         //create a cookie for the json web token

@@ -90,7 +90,7 @@ function Login() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <p>By continuing you agree to TASQ’s <span className="text-secondary">Terms of service and privacy policy.</span></p>
+                        <p>By continuing you agree to TASQ’s <span className="text-secondary">Terms of Service and Privacy Policy.</span></p>
                         <hr className="bg-primary h-[0.20rem]" />
                         <p className="self-center">Not on TASQ yet? <Link to={"/signup"}><span className="text-secondary">Signup now</span></Link></p>
                     </div>
