@@ -34,6 +34,12 @@ function Login() {
         })
     }
 
+    const handleWarning = (warning) => {
+        toast.warning(warning, {
+            position: "bottom-left"
+        })
+    }
+
     //error toast
     const handleError = (err) => {
         toast.error(err, {
@@ -55,7 +61,7 @@ function Login() {
 
             console.log(data);
 
-            const { success, message } = data;
+            const { warning, success, message } = data;
 
             if (success) {
                 handleSuccess(message);
@@ -63,7 +69,7 @@ function Login() {
                     navigate("/");
                 }, 1000);
             } else {
-                handleError(message);
+                warning ? handleWarning(message) : handleError(message);
             }
 
             setInput({

@@ -1,7 +1,9 @@
+import Header from "../components/Header";
+
 function Home() {
     return (
         <>
-            This is the home page
+            <Header />
         </>
     )
 }

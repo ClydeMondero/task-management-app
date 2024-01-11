@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
 
         //chech if fields are given
-        if (!email || !password) return res.json({ message: "All fields are required" });
+        if (!email || !password) return res.json({ warning: true, message: "All fields are required" });
 
         //check if email is correct
         const user = await UserModel.findOne({ email });
