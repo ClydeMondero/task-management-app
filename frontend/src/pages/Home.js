@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react"; import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import  axios  from "axios";
+import axios from "axios";
 import Header from "../components/Header";
+import CreateTask from "../components/CreateTask";
 
 function Home() {
     const navigate = useNavigate();
@@ -32,9 +32,12 @@ function Home() {
 
 
     return (
-        <>
+        <div className="flex flex-col items-center h-screen w-screen">
             <Header username={user.username} />
-        </>
+            <div className="flex-1 flex flex-col items-center py-10 w-4/5">
+                <CreateTask />
+            </div>
+        </div>
     )
 }
 
