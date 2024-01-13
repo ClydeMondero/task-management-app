@@ -4,7 +4,7 @@
 
 @layer components {
     .input {
-        @apply bg-secondary-bg py-2 px-4 rounded-lg border-primary border-2 text-primary placeholder-secondary outline-none;
+        @apply bg-secondary-bg py-2 px-4 rounded-lg border-primary border-4 text-lg text-primary placeholder-secondary outline-none;
     }
 
     .checked {

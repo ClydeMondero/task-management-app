@@ -22,14 +22,14 @@ function Signup() {
     const { username, email, password, confirmPassword, agreement } = input;
 
     const clearForm = () => {
-       setInput({
-                ...input,
-                username: "",
-                email: "",
-                password: "",
-                confirmPassword: "",
-                agreement: false
-            })     
+        setInput({
+            ...input,
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            agreement: false
+        })
     }
 
     //update the input fields state on change
@@ -89,7 +89,7 @@ function Signup() {
                     navigate("/login");
                 }, 1000);
             } else {
-                warning? handleWarning(message) : handleError(message); 
+                warning ? handleWarning(message) : handleError(message);
             }
 
         } catch (error) {
@@ -99,7 +99,7 @@ function Signup() {
 
     return (
         <div className="flex items-center justify-center h-lvh">
-            <div className="flex flex-col gap-8 p-8 bg-secondary-bg h-max w-1/3 rounded-lg">
+            <div className="flex flex-col gap-8 p-8 bg-secondary-bg h-max w-1/3 rounded-lg shadow-2xl shadow-red-100">
                 <p className="self-center text-3xl font-bold text-primary">Join us on TASQ</p>
                 <form className="flex flex-col gap-4 outline-none" onSubmit={handleSubmit}>
                     <input name="username" className="input" type="text" placeholder="Username" value={username} onChange={handleOnChange} />
