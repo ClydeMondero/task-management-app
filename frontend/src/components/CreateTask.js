@@ -17,14 +17,14 @@ function CreateTask() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label className='absolute top-1/2 -translate-y-1/2 right-4 flex items-center gap-4'>
-          <FontAwesomeIcon className="text-secondary" icon={faCalendar} />
+        <label className='absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-2'>
           <DatePicker
-            className="text-primary placeholder-secondary w-24 outline-none"
+            className="text-primary placeholder-secondary w-24 focus:-m-2 outline-none"
             selected={dueDate}
             placeholderText="Due Date"
             onChange={(date) => setDueDate(date)}
           />
+          <FontAwesomeIcon className="text-secondary" icon={faCalendar} />
         </label>
       </div>
       <div className="relative w-[15%] h-full">
