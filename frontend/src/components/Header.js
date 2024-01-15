@@ -21,7 +21,7 @@ function Header(props) {
 
   return (
     <>
-      <div className="bg-primary w-screen h-20 rounded-b-3xl flex items-center justify-between px-24 text-white">
+      <div className="bg-primary w-screen h-20 flex items-center justify-between px-24 text-white">
         <p className="font-bold text-4xl">TASQ</p>
 
         <div className="flex items-center gap-4 text-xl">
