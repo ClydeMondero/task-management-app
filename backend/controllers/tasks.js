@@ -8,6 +8,9 @@ exports.addTask = async (req, res) => {
     try {
         //create a new task based on the Task model and values from the request body
         const { title, dueDate, isCompleted } = req.body;
+
+        if (!title) return res.json({ warning: true, message: "Title is required" })
+
         const task = await TaskModel.create({
             title, dueDate, isCompleted
         })
@@ -23,7 +26,7 @@ exports.addTask = async (req, res) => {
             { new: true, useFindAndModify: false }
         )
 
-        res.status(200).json(task);//success
+        res.status(200).json({ message: "New Task is added", success: true });//success
     } catch (error) {
         res.status(400).json({ message: error.message });//bad request
     }

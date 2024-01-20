@@ -34,6 +34,7 @@ function Login() {
         })
     }
 
+    //warning toast
     const handleWarning = (warning) => {
         toast.warning(warning, {
             position: "bottom-left"
@@ -58,8 +59,6 @@ function Login() {
                 },
                 { withCredentials: true }
             );
-
-            console.log(data);
 
             const { warning, success, message } = data;
 
