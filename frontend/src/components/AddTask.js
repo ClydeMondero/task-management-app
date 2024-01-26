@@ -68,14 +68,14 @@ function AddTask() {
       <form className="flex items-center gap-8 w-[60%] text-lg" onSubmit={handleSubmit}>
         <div className='relative flex-1'>
           <input
-            className="w-full py-2 px-4 border-primary border-4 rounded-lg text-primary placeholder-secondary"
+            className="w-full py-2 px-4 rounded-lg bg-secondary-bg text-primary placeholder-secondary focus:outline-primary"
             name="title" type="text" placeholder="Task Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <label className='absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-2'>
             <DatePicker
-              className="text-primary placeholder-secondary w-24 focus:-m-2 outline-none cursor-pointer"
+              className="text-primary bg-secondary-bg placeholder-secondary px-4 w-[108px] rounded-lg focus:-m-2 outline-none cursor-pointer"
               selected={dueDate}
               placeholderText="Due Date"
               onChange={(date) => setDueDate(date)}

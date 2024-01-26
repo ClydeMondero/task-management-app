@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import { ToastContainer, toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function Header(props) {
   const navigate = useNavigate();
@@ -12,27 +11,30 @@ function Header(props) {
 
   useEffect(() => {
     setUsername(props.username);
-  }, [props])
+  }, [props]);
 
   const Logout = () => {
     removeCookie("token");
     navigate("/login");
-  }
+  };
 
   return (
     <>
-      <div className="bg-primary w-screen h-20 flex items-center justify-between px-24 text-white">
+      <div className="bg-primary w-screen h-20 flex items-center justify-between px-24 py-4 text-white">
         <p className="font-bold text-4xl">TASQ</p>
 
         <div className="flex items-center gap-4 text-xl">
           <p className="font-bold">{username}</p>
           <vr className="w-[0.1rem] h-8 bg-secondary-bg rounded-lg" />
-          <FontAwesomeIcon className="cursor-pointer" onClick={Logout} icon={faArrowRightFromBracket} />
+          <FontAwesomeIcon
+            className="cursor-pointer"
+            onClick={Logout}
+            icon={faArrowRightFromBracket}
+          />
         </div>
       </div>
-      <ToastContainer />
     </>
-  )
+  );
 }
 
 export default Header;

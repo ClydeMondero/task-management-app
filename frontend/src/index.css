@@ -1,4 +1,18 @@
 @tailwind base;
+
+*::-webkit-scrollbar {
+    width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(164, 103, 177, 1);
+    border-radius: 14px;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -9,5 +23,13 @@
 
     .checked {
         @apply after:content-['\2713'] py-0 px-[0.38rem] bg-primary text-secondary-bg;
+    }
+
+    .completed-checkbox {
+        @apply bg-primary;
+    }
+
+    .completed-text {
+        @apply text-secondary font-bold line-through;
     }
 }
