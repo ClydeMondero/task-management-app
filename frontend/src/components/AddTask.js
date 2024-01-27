@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios"
 
-function AddTask() {
+function AddTask({ onAdd }) {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
 
@@ -63,6 +63,12 @@ function AddTask() {
     }
   }
 
+  const handleClick = () => {
+    setTimeout(() => {
+      onAdd();
+    }, 3000);
+  }
+
   return (
     <>
       <form className="flex items-center gap-8 w-[60%] text-lg" onSubmit={handleSubmit}>
@@ -85,7 +91,7 @@ function AddTask() {
         </div>
         <div className="relative w-[15%] h-full hover:opacity-[0.8]">
           <FontAwesomeIcon className="absolute top-1/2 left-8 -translate-y-1/2 text-secondary-bg text-3xl cursor-pointer" icon={faPlus} />
-          <input className="bg-secondary w-full h-full rounded-lg cursor-pointer" type="submit" value="" />
+          <input className="bg-secondary w-full h-full rounded-lg cursor-pointer" type="submit" value="" onClick={handleClick} />
         </div>
       </form>
       <ToastContainer />

@@ -7,6 +7,7 @@ function Login() {
     useEffect(() => {
         document.title = "TASQ - Login"
     }, [])
+
     const navigate = useNavigate();
 
     //state for input fields

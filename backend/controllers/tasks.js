@@ -39,10 +39,11 @@ exports.getTasks = async (req, res) => {
         const userId = decoded.id;
 
         //find the tasks of a user
-        const tasks = await UserModel
-            .findById(userId)
-            .populate('tasks')
-            .select('tasks -_id');
+        const user = await UserModel.findById(userId);
+
+        const tasks = await TaskModel.find({
+            _id: { $in: user.tasks }
+        })
 
         res.status(200).json(tasks);
     } catch (error) {
