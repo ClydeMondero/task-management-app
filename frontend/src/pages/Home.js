@@ -57,14 +57,16 @@ function Home() {
         <div className="flex flex-col items-center h-screen w-screen">
             <Header username={user.username} />
             <div className="flex-1 flex flex-col items-center gap-4 py-6 w-4/5">
-                <AddTask onAdd={getTasks}/>
-                <div className="flex flex-col items-center gap-4 w-full h-[350px] bg-secondary-bg py-8 rounded-lg overflow-auto">
+                <AddTask onAdd={getTasks} />
+                <div className="flex flex-col items-center gap-2 w-full h-[380px] bg-secondary-bg py-8 rounded-lg overflow-auto">
                     {tasks.map(task => (
-                        <Task 
+                        <Task
+                            onDelete={getTasks}
                             key={task._id}
+                            id={task._id}
                             title={task.title}
                             dueDate={
-                                task.dueDate? moment(task.dueDate).fromNow() : ""
+                                task.dueDate ? moment(task.dueDate).fromNow() : ""
                             }
                             isCompleted={task.isCompleted}
                         />

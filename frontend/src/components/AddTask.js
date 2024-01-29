@@ -81,7 +81,7 @@ function AddTask({ onAdd }) {
           />
           <label className='absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-2'>
             <DatePicker
-              className="text-primary bg-secondary-bg placeholder-secondary px-4 w-[108px] rounded-lg focus:-m-2 outline-none cursor-pointer"
+              className="text-primary bg-secondary-bg placeholder-secondary text-center w-[125px] rounded-lg focus:-m-2 outline-none cursor-pointer"
               selected={dueDate}
               placeholderText="Due Date"
               onChange={(date) => setDueDate(date)}

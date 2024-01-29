@@ -79,9 +79,9 @@ exports.updateTask = async (req, res) => {
 
 exports.deleteTask = async (req, res) => {
     try {
-        const task = await TaskModel.findByIdAndDelete(req.params.id);
-        res.send(`Document with the title of ${task.title} has been deleted`);
+        const task = await TaskModel.findByIdAndDelete(req.query.id);
+        res.send({ success: true, message: `${task.title} has been deleted` });
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(400).json({ error: error.message });
     }
 }
