@@ -15,6 +15,7 @@ app.use(
         origin: ["https://tasq-app.onrender.com"],
         methods: ["GET", "POST", "PATCH", "DELETE"],
         credentials: true,
+        allowedHeaders: ["Content-Type", "Authorization"]
     })
 );
 
