@@ -31,6 +31,8 @@ exports.signup = async (req, res) => {
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
+            secure: true,
+            sameSite: "none",
             httpOnly: false
         })
 
@@ -60,6 +62,8 @@ exports.login = async (req, res) => {
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
+            secure: true,
+            sameSite: "none",
             httpOnly: false
         })
 
