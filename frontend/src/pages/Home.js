@@ -42,7 +42,7 @@ function Home() {
     const getTasks = async () => {
         const { data } = await axios.get(
             //"http://localhost:4000/tasks/get",
-            "https://tasq.onrender.com/tasks/get",
+            "https://tasq.onrender.com/tasks/get"
             { withCredentials: true }
         );
 
