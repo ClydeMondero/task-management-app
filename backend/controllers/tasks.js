@@ -51,27 +51,17 @@ exports.getTasks = async (req, res) => {
     }
 }
 
-exports.getTask = async (req, res) => {
-    try {
-        const task = await TaskModel.findById(req.params.id);
-
-        res.status(200).json(task);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
-
 exports.updateTask = async (req, res) => {
     try {
-        const id = req.params.id;
-        const task = req.body;
+        const id = req.query.id;
+        const isCompleted = req.body.isCompleted;
         const options = { new: true };
 
-        const result = await TaskModel.findByIdAndUpdate(
-            id, task, options
+        const task = await TaskModel.findByIdAndUpdate(
+            id, { isCompleted: isCompleted }, options
         )
 
-        res.send(result);
+        res.status(200).json({ message: `${task.title}'s isCompleted is set to ${isCompleted}` });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

@@ -25,8 +25,16 @@
         @apply after:content-['\2713'] py-0 px-[0.38rem] bg-primary text-secondary-bg;
     }
 
+    .incomplete-checkbox {
+        @apply appearance-none p-4 border-primary border-2 rounded-3xl bg-none;
+    }
+
     .completed-checkbox {
-        @apply bg-primary;
+        @apply appearance-none p-4 border-primary border-2 rounded-3xl bg-primary;
+    }
+
+    .incomplete-text {
+        @apply text-primary font-bold;
     }
 
     .completed-text {
