@@ -21,7 +21,8 @@ function Task(props) {
 
   const handleClick = async () => {
     const { data } = await axios.delete(
-      "http://localhost:4000/tasks/delete",
+      //"http://localhost:4000/tasks/delete",
+      "https://tasq.onrender.com/tasks/delete",
       { params: { id: props.id }, withCredentials: true },
     )
 
@@ -63,7 +64,8 @@ function Task(props) {
 
   const handleCompletion = async () => {
     await axios.patch(
-      "http://localhost:4000/tasks/update",
+      //"http://localhost:4000/tasks/update",
+      "https://tasq.onrender.com/tasks/update",
       { isCompleted: !isCompleted },
       {
         params: {

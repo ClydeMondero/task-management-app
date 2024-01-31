@@ -25,7 +25,8 @@ function Home() {
             }
 
             const { data } = await axios.post(
-                "http://localhost:4000/auth/",
+                //"http://localhost:4000/auth/",
+                "https://tasq.onrender.com/auth/",
                 {},
                 { withCredentials: true }
             )
@@ -40,7 +41,8 @@ function Home() {
 
     const getTasks = async () => {
         const { data } = await axios.get(
-            "http://localhost:4000/tasks/get",
+            //"http://localhost:4000/tasks/get",
+            "https://tasq.onrender.com/tasks/get",
             { withCredentials: true }
         );
 

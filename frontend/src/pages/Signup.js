@@ -72,7 +72,8 @@ function Signup() {
 
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/auth/signup",
+                //"http://localhost:4000/auth/signup",
+                "https://tasq.onrender.com/auth/signup",
                 {
                     ...input,
                 },

@@ -12,7 +12,7 @@ app.listen(port, () => console.log('Server connected at port', port));
 //enable cors 
 app.use(
     cors({
-        origin: ["http://localhost:3000"],
+        origin: ["https://tasq-app.onrender.com"],
         methods: ["GET", "POST", "PATCH", "DELETE"],
         credentials: true,
     })

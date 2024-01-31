@@ -36,7 +36,8 @@ function AddTask({ onAdd }) {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/tasks/add",
+        //"http://localhost:4000/tasks/add",
+        "https://tasq.onrender.com/tasks/add",
         {
           title,
           dueDate,
