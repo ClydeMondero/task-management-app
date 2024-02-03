@@ -37,3 +37,6 @@ This app is build with the MERN Stack. ReactJs and TailwindCss for the Frontend.
 - Create a task with/without a due date 
 - Mark a tasks as completed 
 - Delete a task
+
+## Roadmap
+- Responsive layout for mobile devices
