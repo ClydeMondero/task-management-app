@@ -3,6 +3,10 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
+axios.defaults.baseURL = apiUrl;
+
 function Login() {
     useEffect(() => {
         document.title = "TASQ - Login"
@@ -54,8 +58,7 @@ function Login() {
 
         try {
             const { data } = await axios.post(
-                //"http://localhost:4000/auth/login",
-                "https://tasq.onrender.com/auth/login",
+                "auth/login",
                 {
                     ...input,
                 },

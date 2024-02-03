@@ -4,6 +4,10 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
+const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
+axios.defaults.baseURL = apiUrl;
+
 function Task(props) {
   //success toast
   const handleSuccess = (msg) => {
@@ -21,8 +25,7 @@ function Task(props) {
 
   const handleClick = async () => {
     const { data } = await axios.delete(
-      //"http://localhost:4000/tasks/delete",
-      "https://tasq.onrender.com/tasks/delete",
+      "tasks/delete",
       { params: { id: props.id }, withCredentials: true },
     )
 
@@ -64,8 +67,7 @@ function Task(props) {
 
   const handleCompletion = async () => {
     await axios.patch(
-      //"http://localhost:4000/tasks/update",
-      "https://tasq.onrender.com/tasks/update",
+      "tasks/update",
       { isCompleted: !isCompleted },
       {
         params: {

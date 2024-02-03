@@ -7,6 +7,10 @@ import AddTask from "../components/AddTask";
 import Task from "../components/Task";
 import moment from "moment"
 
+const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
+axios.defaults.baseURL = apiUrl;
+
 function Home() {
     useEffect(() => {
         document.title = "TASQ - Home"
@@ -25,8 +29,7 @@ function Home() {
             }
 
             const { data } = await axios.post(
-                //"http://localhost:4000/auth/",
-                "https://tasq.onrender.com/auth/",
+                "auth",
                 {},
                 { withCredentials: true }
             )
@@ -41,8 +44,7 @@ function Home() {
 
     const getTasks = async () => {
         const { data } = await axios.get(
-            //"http://localhost:4000/tasks/get",
-            "https://tasq.onrender.com/tasks/get",
+            "tasks/get",
             { withCredentials: true }
         );
 

@@ -6,6 +6,10 @@ import "react-datepicker/dist/react-datepicker.css"
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios"
 
+const apiUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
+axios.defaults.baseURL = apiUrl;
+
 function AddTask({ onAdd }) {
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
@@ -36,8 +40,7 @@ function AddTask({ onAdd }) {
 
     try {
       const { data } = await axios.post(
-        //"http://localhost:4000/tasks/add",
-        "https://tasq.onrender.com/tasks/add",
+        "tasks/add",
         {
           title,
           dueDate,
