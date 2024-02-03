@@ -24,7 +24,7 @@
 ## About The Project
 ![Screen Shot](images/screenshot.png)
 
-I wanted to learn how full stack application work and I also want to track the things that I have to do so I made an app that will hone my full stack development skills.
+I wanted to learn how full stack application work and I also want to track the things that I have to do so I made an app that will hone my full stack development skills and manage my tasks.
 
 ## Built With
 
