@@ -28,7 +28,7 @@ I wanted to learn how full stack application work and I also want to track the t
 
 ## Built With
 
-This app is build with the MERN Stack. ReactJs and TailwindCss for the Frontend. NodeJs, ExpressJs, and MongoDB for the Backend.
+This app was built with MERN Stack. ReactJs and TailwindCss for the Frontend. NodeJs, ExpressJs, and MongoDB for the Backend.
 
 ## Getting Started
 - Login your account if you already have one if not you can sign up first.
