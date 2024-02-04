@@ -87,8 +87,8 @@ function Login() {
     }
 
     return (
-        <div className="flex items-center justify-center h-lvh ">
-            <div className="flex flex-col gap-8 p-8 bg-secondary-bg h-max w-1/3 rounded-lg shadow-2xl shadow-red-100">
+        <div className="h-screen bg-secondary-bg flex justify-center items-center md:bg-white">
+            <div className="flex flex-col gap-8 p-8 rounded-lg shadow-[0_5px_10px_pink] md:bg-secondary-bg">
                 <p className="self-center text-3xl font-bold text-primary">Welcome to TASQ</p>
                 <form className="flex flex-col gap-4 outline-none" onSubmit={handleSubmit}>
                     <input name="email" className="input" type="text" placeholder="Email" value={email} onChange={handleOnChange} />

@@ -48,8 +48,6 @@ function Home() {
             { withCredentials: true }
         );
 
-        console.log(data);
-
         setTasks(data);
     }
 
