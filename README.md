@@ -24,11 +24,11 @@
 ## About The Project
 ![Screen Shot](images/screenshot.png)
 
-I wanted to learn how full stack application work and I also want to track the things that I have to do so I made an app that will hone my full stack development skills.
+I wanted to learn how full stack application work and I also want to track the things that I have to do so I made an app that will hone my full stack development skills and manage my tasks.
 
 ## Built With
 
-This app is build with the MERN Stack. ReactJs and TailwindCss for the Frontend. NodeJs, ExpressJs, and MongoDB for the Backend.
+This app was built with MERN Stack. ReactJs and TailwindCss for the Frontend. NodeJs, ExpressJs, and MongoDB for the Backend.
 
 ## Getting Started
 - Login your account if you already have one if not you can sign up first.
@@ -37,3 +37,6 @@ This app is build with the MERN Stack. ReactJs and TailwindCss for the Frontend.
 - Create a task with/without a due date 
 - Mark a tasks as completed 
 - Delete a task
+
+## Roadmap
+- Responsive layout for mobile devices
