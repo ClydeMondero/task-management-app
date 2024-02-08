@@ -56,11 +56,11 @@ function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center h-screen w-screen">
+        <div className="flex flex-col items-center h-dvh w-dvh">
             <Header username={user.username} />
             <div className="flex-1 flex flex-col items-center gap-4 py-6 w-4/5">
                 <AddTask onAdd={getTasks} />
-                <div className="flex flex-col items-center gap-2 w-full h-[380px] bg-secondary-bg px-2 py-8 rounded-lg overflow-auto md:px-8">
+                <div className="flex flex-col items-center gap-2 w-full h-full bg-secondary-bg px-2 py-8 rounded-lg overflow-auto md:px-8">
                     {tasks.map(task => (
                         <Task
                             onDelete={getTasks}
