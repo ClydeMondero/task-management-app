@@ -75,8 +75,8 @@ function AddTask({ onAdd }) {
 
   return (
     <>
-      <form className="flex items-center gap-8 w-[60%] text-lg" onSubmit={handleSubmit}>
-        <div className='relative flex-1'>
+      <form className="flex flex-col gap-4 w-full text-lg md:flex-row" onSubmit={handleSubmit}>
+        <div className='relative w-full'>
           <input
             className="w-full py-2 px-4 rounded-lg bg-secondary-bg text-primary placeholder-secondary focus:outline-primary"
             name="title" type="text" placeholder="Task Title"
@@ -93,9 +93,9 @@ function AddTask({ onAdd }) {
             <FontAwesomeIcon className="text-secondary cursor-pointer" icon={faCalendar} />
           </label>
         </div>
-        <div className="relative w-[15%] h-full hover:opacity-[0.8]">
-          <FontAwesomeIcon className="absolute top-1/2 left-8 -translate-y-1/2 text-secondary-bg text-3xl cursor-pointer" icon={faPlus} />
-          <input className="bg-secondary w-full h-full rounded-lg cursor-pointer" type="submit" value="" onClick={handleClick} />
+        <div className="relative w-full h-full hover:opacity-[0.8] -z-10 md:w-[25%] lg:w-[35%] xl:w-[45%]">
+          <FontAwesomeIcon className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-secondary-bg text-3xl cursor-pointer" icon={faPlus} />
+          <input className="bg-secondary w-full h-full py-1 rounded-lg cursor-pointer" type="submit" value="" onClick={handleClick} />
         </div>
       </form>
       <ToastContainer />

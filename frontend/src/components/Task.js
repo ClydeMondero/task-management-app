@@ -82,20 +82,21 @@ function Task(props) {
 
   return (
     <>
-      <div className="flex items-center justify-between bg-primary-bg w-3/4 px-4 py-2 rounded-lg text-xl">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between bg-primary-bg w-full px-4 py-2 rounded-lg text-xl md:gap-4">
+        <div className="flex flex-1 items-center gap-4">
           <input className={checkbox} type="checkbox" onClick={handleCompletion} />
-          <p className={text}>{props.title}</p>
+
+          <div className="flex flex-1 flex-col md:flex-row md:items-center md:justify-between">
+            <p className={text}>{props.title}</p>
+            <p className="text-base text-secondary">{props.dueDate}</p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <p className="text-base text-secondary">{props.dueDate}</p>
-          <FontAwesomeIcon
-            className="text-primary cursor-pointer"
-            icon={faTrashCan}
-            onClick={handleClick}
-          />
-        </div>
+        <FontAwesomeIcon
+          className="text-primary cursor-pointer"
+          icon={faTrashCan}
+          onClick={handleClick}
+        />
       </div>
       <ToastContainer />
     </>
