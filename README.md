@@ -39,4 +39,8 @@ This app was built with MERN Stack. ReactJs and TailwindCss for the Frontend. No
 - Delete a task
 
 ## Roadmap
-- Responsive layout for mobile devices
+- Dark mode
+- Catch all Urls
+- Email verification
+- Forgot password feature
+- A proper Terms and Conditions
